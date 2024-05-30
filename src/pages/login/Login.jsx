@@ -31,22 +31,48 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="email" 
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password" 
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-        {error && <span>Wrong email or password!</span>}
-      </form>
-    </div>
+    <div className="container">    
+            <input type="checkbox" id="chk" aria-hidden="true" />
+
+
+            <div className="login">
+                <form onSubmit={handleLogin}>
+                    <label htmlFor="chk" aria-hidden="true">Login</label>
+                    <input 
+                        type="email" 
+                        placeholder="Email" 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        required 
+                    />
+                    <input 
+                        type="password" 
+                        name="pswd" 
+                        placeholder="Password"
+                        onChange={(e) => setPassword(e.target.value)} 
+                        required 
+                    />
+                    <button type="submit">Login</button>
+                    {error && <span>Wrong email or password!</span>}
+                </form>
+            </div>
+
+            <div className="signup">
+                <form>
+                    <label htmlFor="chk" aria-hidden="true">Sign up</label>
+                    <input type="text" name="txt" placeholder="User name" required />
+                    <input type="email" name="email" placeholder="Email" required />
+                    <input type="password" name="pswd" placeholder="Password" required />
+                    <button type="submit">Sign up</button>
+                </form>
+            </div>
+
+            
+        </div>
+    
+
+
+ 
+    
   );
 };
 
