@@ -13,6 +13,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 
 
+
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
@@ -31,6 +32,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
+          
             <Route path="login" element={<NotRequireAuth><Login /></NotRequireAuth>}></Route>
             <Route index element={<RequireAuth><Home /></RequireAuth>}></Route>
             <Route path="users">
@@ -51,8 +53,10 @@ function App() {
             </Route>
             <Route path="categories">
               <Route index element={<RequireAuth><MyList /></RequireAuth>}></Route>
+              
             </Route>
-          </Route>
+            
+          </Route> 
         </Routes>
       </BrowserRouter>
     </div>

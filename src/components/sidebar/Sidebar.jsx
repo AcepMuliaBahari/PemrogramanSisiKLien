@@ -10,8 +10,28 @@ import CategoryIcon from "@mui/icons-material/Category";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+  
+  const navigate = useNavigate();
+  const { dispatch: authDispatch } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        authDispatch({ type: "LOGOUT" });
+        navigate("/login"); // Redirect to login page after logout
+      })
+      .catch((error) => {
+        console.error("Logout error: ", error);
+      });
+  };
+
   
   return (
     <div className="sidebar">
@@ -56,9 +76,10 @@ const Sidebar = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li>
+          <li onClick={handleLogout}>
             <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+             <span>Logout</span>
+            
           </li>
         </ul>
       </div>
