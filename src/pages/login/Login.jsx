@@ -35,7 +35,8 @@ const Login = () => {
   };
 
   return (
-    
+    <>
+    <p>Login: Email = admin@store.com  || Password= 123456</p>
     <div className="coba">    
             <input type="checkbox" id="chk" aria-hidden="true" />
 
@@ -76,7 +77,7 @@ const Login = () => {
             
         </div>
         
-
+        </>
 
  
     
