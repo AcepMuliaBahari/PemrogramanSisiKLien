@@ -70,6 +70,21 @@
             cursor: pointer;
             margin-top: 10px;
           }
+          button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            background-color: teal;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+          
+            &:disabled{
+              background-color: rgba(3, 92, 92, 0.322);
+              cursor: not-allowed;
+            }
+          }
         }
       }
     }
