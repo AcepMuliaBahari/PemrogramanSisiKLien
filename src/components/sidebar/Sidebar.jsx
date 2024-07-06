@@ -9,7 +9,6 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import CategoryIcon from "@mui/icons-material/Category";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
-
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -49,8 +48,8 @@ const Sidebar = () => {
             <span>Dashboard</span>
           </li>
           <p className="title">LIST</p>
-          <Link to="/users">
-            <li>
+          <Link  to="/users">
+            <li data-testid="users">
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
             </li>

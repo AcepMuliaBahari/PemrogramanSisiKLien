@@ -42,23 +42,24 @@ const Login = () => {
 
 
             <div className="login">
-                <form onSubmit={handleLogin}>
+                <form data-testid="form" onSubmit={handleLogin}>
                     <label className="lbl" htmlFor="chk" aria-hidden="true">Login</label>
                     <input className="inpt" 
+                        id="email"
                         type="email" 
-                        placeholder="Email" 
+                        placeholder="Masukan Email" 
                         onChange={(e) => setEmail(e.target.value)} 
                         required 
                     />
                     <input className="inpt" 
-                    
+                        id="password"
                         type="password" 
                         name="pswd" 
                         placeholder="Password"
                         onChange={(e) => setPassword(e.target.value)} 
                         required 
                     />
-                    <button className="btn" type="submit">Login</button>
+                    <button className="btn" type="submit" data-testid="submit">Login</button>
                     {error && <span>Wrong email or password!</span>}
                     
                 </form>
