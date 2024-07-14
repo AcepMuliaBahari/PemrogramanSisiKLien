@@ -124,7 +124,7 @@ const New = ({ inputs, title }) => {
           <div className="right">
             <form onSubmit={handleAdd}>
               <div className="formInput">
-                <label htmlFor="file">
+                <label  htmlFor="file"> 
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
                 <input
@@ -146,7 +146,7 @@ const New = ({ inputs, title }) => {
                   />
                 </div>
               ))}
-              <button disabled={per !== null && per < 100} type="submit">
+              <button disabled={per !== null && per < 100} data-testid="send" type="submit">
                 Send
               </button>
             </form>

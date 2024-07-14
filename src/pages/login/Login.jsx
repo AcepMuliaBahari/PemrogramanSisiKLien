@@ -4,17 +4,17 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-
-
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 const Login = () => { 
   const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navitage= useNavigate();
-  const {dispatch} = useContext(AuthContext);
- 
+  const navigate= useNavigate();
+  const { dispatch: authDispatch } = useContext(AuthContext); 
+  const { dispatch: darkModeDispatch } = useContext(DarkModeContext); 
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        dispatch({type:"LOGIN" , payload:user});
+        authDispatch({type:"LOGIN" , payload:user});
         
         navigate("/");
         
@@ -35,50 +35,42 @@ const Login = () => {
   };
 
   return (
-    <>
-    <p>Login: Email = admin@store.com  || Password= 123456</p>
-    <div className="coba">    
-            <input type="checkbox" id="chk" aria-hidden="true" />
+    
+    <div className="login">
+   
+    <form data-testid="form" onSubmit={handleLogin}>
+      <input
+        id="email"
+        type="email"
+        placeholder="Masukan Email" 
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        id="password"
+        type="password"
+        placeholder="Password" 
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button type="submit" data-testid="submit">Login</button>
+      {error && <span>Wrong email or password!</span>}
+      <div className="item">
+            <DarkModeOutlinedIcon className="icon" 
+            onClick = {() => darkModeDispatch ({ type : "TOGGLE"})} />
+          </div>
+    </form>
+    
+  </div>
+   
+    
+         
+   
 
-
-            <div className="login">
-                <form data-testid="form" onSubmit={handleLogin}>
-                    <label className="lbl" htmlFor="chk" aria-hidden="true">Login</label>
-                    <input className="inpt" 
-                        id="email"
-                        type="email" 
-                        placeholder="Masukan Email" 
-                        onChange={(e) => setEmail(e.target.value)} 
-                        required 
-                    />
-                    <input className="inpt" 
-                        id="password"
-                        type="password" 
-                        name="pswd" 
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)} 
-                        required 
-                    />
-                    <button className="btn" type="submit" data-testid="submit">Login</button>
-                    {error && <span>Wrong email or password!</span>}
-                    
-                </form>
-            </div>
-
-            <div className="signup">
-                <form>
-                    <label className="lbl" htmlFor="chk" aria-hidden="true">Sign up</label>
-                    <input className="inpt" type="text" name="txt" placeholder="User name" required />
-                    <input className="inpt" type="email" name="email" placeholder="Email" required />
-                    <input className="inpt" type="password" name="pswd" placeholder="Password" required />
-                    <button className="btn" type="submit">Sign up</button>
-                </form>
-            </div>
-
+ 
             
-        </div>
+            
         
-        </>
+       
+      
 
  
     

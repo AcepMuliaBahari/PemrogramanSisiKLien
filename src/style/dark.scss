@@ -63,4 +63,34 @@
     input{
         background-color: transparent;
     }
+    #chk{
+      background-color: #111;
+    }
+    .login{
+      background-color: #111;
+      border-color: #430a9e;
+    }
+    .coba{
+      background-color: #111;
+      .lbl{
+        color: #cf0808;
+      }
+      .inpt{
+        
+          background-color: #cf0808;
+          color: rgb(226, 226, 223);
+      
+      }
+      .btn{
+
+        color: aquamarine;
+      }
+    }
+    .Toastify{
+      background-color: #111;
+    }
+    
+    #root{
+      background-color: #111;
+    }
   }

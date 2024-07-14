@@ -1,3 +1,5 @@
+
+
 describe('template spec', () => {
   it('passes', () => {
     cy.visit('http://localhost:5173/')
@@ -27,5 +29,32 @@ describe('template spec', () => {
     
     cy.get('div.datatableTitle').contains('USERS')
 
+    cy.get('[data-testid="categories"]').click()
+    
+    cy.url().should('include', '/categories')
+
+    cy.get('div.widget')
+          .should('be.visible')
+          cy.get('div.myDatatable')
+          .should('be.visible') 
+
+    cy.get('[data-testid="add-new"]').click()
+
+    cy.get('input#name')
+    .should('be.visible')
+    .should('have.attr', 'placeholder', 'Coffee')
+
+    .type('Dessert').should('have.value', 'Dessert')
+    
+    cy.get('[data-testid="send"]').click()
+    cy.contains('Dessert',{ timeout: 6000 }).parent().find('.deleteButton').click();
+    
+    cy.get('Dessert').should('not.exist');
+    cy.reload();
+
+
+
   })
+    
+
 })

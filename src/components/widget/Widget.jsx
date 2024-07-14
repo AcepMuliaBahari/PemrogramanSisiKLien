@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const Widget = ({ type }) => {
+const Widget = ({ type, title }) => {
   let data;
 
   //temporary
@@ -35,12 +35,12 @@ const Widget = ({ type }) => {
       };
       break;
       
-    case "order":
+    case "product":
       data = {
-        title: "ORDERS",
+        title: "PRODUCTS",
         isMoney: false,
-        link: "View all orders",
-        query:"users",
+        link: "View all products",
+        query:"products",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -52,12 +52,12 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+    case "categories":
       data = {
-        title: "EARNINGS",
+        title: "CATEGORIES",
         isMoney: true,
-        link: "View net earnings",
-        query:"users",
+        link: "View net categories",
+        query:"categories",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -66,23 +66,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
-      data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
-        query:"users",
-        icon: (
-          <AccountBalanceWalletOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
-            }}
-          />
-        ),
-      };
-      break;
+   
     default:
       break;
   }

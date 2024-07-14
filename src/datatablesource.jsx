@@ -40,3 +40,11 @@ export const productColumns = [
     { field: "category", headerName: "Category", width: 90 },
     { field: "stock", headerName: "Stock", width: 90 } 
 ]; 
+
+export const categoryColumns = [
+    { field: "id", headerName: "ID", width: 150 },
+    { field: "name", headerName: "Name", width: 150 },
+    
+   
+  
+]; 

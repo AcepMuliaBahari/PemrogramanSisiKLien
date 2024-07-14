@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import Datatable from "../../components/datatable/Datatable";
+import MyDatatable from "../../components/mydatatable/MyDatatable";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
@@ -27,6 +28,9 @@ const Single = ({columns}) => {
               setData({...docSnapData, detailName : docSnapData.displayName}); 
               break; 
             case "products":
+              setData({...docSnapData, detailName : docSnapData.title}); 
+              break; 
+            case "categories":
               setData({...docSnapData, detailName : docSnapData.title}); 
               break; 
             default: 
@@ -78,6 +82,7 @@ const Single = ({columns}) => {
         <div className="bottom">  
           <h1 className="title">Last Transactions</h1>
           <Datatable columns={columns} />
+          
         </div>
       </div>
     </div>
